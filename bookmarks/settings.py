@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.core.urlresolvers import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
 
 )
 
@@ -50,6 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
 )
 
 ROOT_URLCONF = 'bookmarks.urls'
@@ -102,3 +105,37 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
+LOGIN_URL = reverse_lazy('login')
+LOGOUT_URL = reverse_lazy('logout')
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.Facebook2OAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.google.GoogleOpenId',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.google.GoogleOAuth',
+    'social.backends.google.GooglePlusAuth',
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+
+
+)
+
+# SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1674636146159235' # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'e7eb961df7f0d093b292cc48a0120337' # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_TWITTER_KEY = 'qwjpCIcH5xHkyFh7u2HA9mdLa' # Twitter Consumer Key
+SOCIAL_AUTH_TWITTER_SECRET = 'iqYsdfI6yADhcUTb7ZIq8Fde0SkEGB7Vc1ZdaaPMr4GCURsWPk' # Twitter Consumer Secret
+
+GOOGLE_OAUTH2_CLIENT_ID = '61120355068-gc3efemkf2escis2s8hksgiq7gogc2ji.apps.googleusercontent.com' # Google Consumer Key
+GOOGLE_OAUTH2_CLIENT_SECRET = '2WfKRJVOqTwmkfbyb3iTf7wT' # Google Consumer Secret
