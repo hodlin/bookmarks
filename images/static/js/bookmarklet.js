@@ -10,7 +10,26 @@
     var min_height = 100;
 
     function bookmarklet() {
-        //Here goes our bookmarklet code
+        // Loads CSS
+        var css = jQuery('<link>');
+        css.attr({
+            rel: 'stylesheet',
+            type: 'text/css',
+            href: static_url + 'css/bookmarklet.css?r=' + Math.floor(Math.random()*99999999999999999999)
+        });
+        jQuery('head').append(css);
+
+        // Load HTML
+        box_html = '<div id="bookmarklet">' +
+            '<a href="#" id="close">&times;</a>' +
+            '<h1>Select an image to bookmark:</h1>' +
+            '<div class="images"></div></div>';
+        jQuery('body').append(box_html);
+
+        // close event
+        jQuery('#bookmarklet #close').click(function() {
+            jQuery('#bookmarklet').remove();
+        });
     };
 
     // Check if jquery is loaded
