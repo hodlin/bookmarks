@@ -30,6 +30,14 @@
         jQuery('#bookmarklet #close').click(function() {
             jQuery('#bookmarklet').remove();
         });
+
+        // Find images and display them
+        jQuery.each(jQuery('img[src$="jpg"]'), function(index, image) {
+            if(jQuery(image).width() >= min_width && jQuery(image).height() >= min_height) {
+                image_url = jQuery(image).attr('src');
+                jQuery('#bookmarklet .images').append('<a href="#"><img src="' + image_url + '" /></a>');
+            }
+        });
     };
 
     // Check if jquery is loaded
