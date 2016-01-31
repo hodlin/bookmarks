@@ -1,4 +1,5 @@
 .venv3/*
 .idea/*
+media/*
 *.pyc
 *.sqlite3
