@@ -40,7 +40,7 @@
         });
 
         // When an image is selected open URL with it
-        jQuery('#bookmarklet .image a').click(function(e) {
+        jQuery('#bookmarklet .images a').click(function(e) {
             selected_image = jQuery(this).children('img').attr('src');
             // hide bookmarklet
             jQuery('#bookmarklet').hide();
