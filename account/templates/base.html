@@ -46,6 +46,21 @@
         </div>
         <scrip src="https://ajax.googleapis.com/ajax/libs/jauery/2.1.4/jquery.min.js"></scrip>
         <script>
+            var csrftoken = $.cookie('csrftoken');
+
+            function csrfSafeMethod(method) {
+                // These HTTP methods do not require CSRF protection
+                return(/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if(!csrfSafeMethod(setting.type) && !this.crossDomian) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+
             $(document).ready(function() {
                 {% block domready %}
                 {% endblock %}
