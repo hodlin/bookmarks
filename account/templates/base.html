@@ -44,5 +44,12 @@
             {% block content %}
             {% endblock %}
         </div>
+        <scrip src="https://ajax.googleapis.com/ajax/libs/jauery/2.1.4/jquery.min.js"></scrip>
+        <script>
+            $(document).ready(function() {
+                {% block domready %}
+                {% endblock %}
+            });
+        </script>
     </body>
 </html>
