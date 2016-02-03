@@ -20,8 +20,8 @@
     block_request == false) {
             block_request = true;
             page += 1;
-            $.get('?page=' + page, function() {
-                if (data == '') {
+            $.get('?page=' + page, function(data) {
+                if(data == '') {
                     empty_page = true;
                 } else {
                     block_request = false;
