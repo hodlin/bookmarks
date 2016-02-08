@@ -145,5 +145,5 @@ GOOGLE_OAUTH2_CLIENT_SECRET = '2WfKRJVOqTwmkfbyb3iTf7wT' # Google Consumer Secre
 
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('user_detail',
-                                        args = [u.username])
+                                        args=[u.username])
 }
