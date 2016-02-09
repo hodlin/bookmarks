@@ -67,12 +67,11 @@ def image_list(request):
                   {'section': 'images', 'images': images})
 
 
-
-
 @ajax_required
 @login_required
 @require_POST
 def image_like(request):
+    print("I'm get inside image_like!!!")
     image_id = request.POST.get('id')
     action = request.POST.get('action')
     if image_id and action:
